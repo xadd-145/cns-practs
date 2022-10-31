@@ -1,0 +1,80 @@
+NETWORK RECANNISSANCE TOOLS
+
+1.WHOIS
+Query and response protocol that gives you the information of domain registrant
+and registrar. Available as the utility in Linux systems.
+The important information that attackers look for: Email, registry expiry date, update date, registrant information
+Attacks possible: domain hijacking, phishing, information gathering through social engineering
+It is searcher for an object in a WHOIS database.WHOIS is a query and response protocol that is widely used for quering database that store registerd users of an internet resource,such as domain name or ip address.
+      Install WHOIS - sudo apt install whois
+      ->whois tsec.edu
+      options: -h : Host...connects to database host,
+               -p : Port...when connecting, connects to network
+               --help : display help msg & exit
+               
+ 2.DIG
+ DIG command stands for Domain Information Groper. 
+ It is used for retrieving information about DNS name servers.
+ It is used by network administrators. 
+ It is used for verifying & trouble shooting DNS problems & to perform DNS lookups. 
+ Dig command replaces older tools such as nslookup & the host. Eg. dig www.google.com.
+      ->Basic - dig yahoo.com
+      ->Short - ig yahoo.com +short
+      ->NameServer Record - dig yahoo.com -t ns
+      ->Mailserver list - dig yahoo.com -t mx
+      
+3.TRACEROUTE
+Prints the route that a packet takes to reach the host. 
+This command is useful when you want to know about the route and about all the hops that a packet takes.
+Traceroute, by default, measures 30 hops of 60-byte packets.
+If a packet is not acknowledged within the expected timeout, an asterisk is displayed.
+eg: traceroute www.google.com
+      Install Traceroute - sudo apt install traceroute
+      ->Basic - traceroute www.google.com
+      ->Hops(20) - traceroute -m 20 www.google.com
+      ->Uses ICMP for tracerouting - traceroute -T www.google.com
+      ->Uses TCP SYN for tracerouting - traceroute -I www.yahoo.com
+
+4.NIKTO
+Web vulnerability scanner, Find vulnerabilities of websites and attacks possible for them and their solutions
+Nikto is an open-source web server scanner which performs comprehensive tests against web servers for multiple items. 
+You can use Nikto with any web servers like Apache, Nginx, IHS, OHS, Litespeed, and so on. 
+Nikto can check for server configuration items such as the presence of multiple index files, 
+http server options, and will attempt to identify installed web servers and software. 
+Items and plugins scanned by Nikto are frequently updated and can be automatically updated.
+eg: nikto -h 128.199.222.244
+      Installation: sudo apt-get install nikto
+      ->nikto -h google.com
+      
+5.DMITRY
+Dmitry is a free and open-source tool available on GitHub.
+The tool is used for information gathering. 
+Dmitry stands for DeepMagic Information Gathering Tool.
+It’s a command-line tool, Using Dmitry tool You can collect information about the target, 
+this information can be used for social engineering attacks.
+It can be used to gather a number of valuable pieces of information.
+DMitry has the ability to perform TCP port scan on host targets,
+search subdomain on a target host, whois lookup, E-mail address search on target hosts.
+Dmitry Tool can be used to =>>
+*Search subdomains of the target,
+*Find open ports of the target system,perform TCP scan,
+*With netcraft service to get the target information such as operating system, web server details, web host details, hosting service details, etc.
+*With whois service to get the target information such as registered domain, name, address, the contact information of the person who registered it.
+*Get email addresses that are associated with the domain of the target.
+      Install: sudo apt install dmitry
+      =>Command for whois lookup, to retrieve netcraft info, search for subdomains,search for email addresses -
+          dmitry -wnse -o dmitry-info.txt yahoo.com
+      =>Command for port scanning(TCPPORTSCAN,saves in file info.txt) - 
+          dmitry -pb -o dmitry-portscaninfo.txt tsec.edu
+
+6.THE HARVESTER
+The Harvester is a tool that was developed in python. Using this you can gather information like 
+emails, subdomains, hosts, employee names, open ports and banners from different public sources like 
+search engines, PGP key servers, and SHODAN computer database.
+Format: theharvester -d [domain name] -b [search engine name / all ][options][parameters]
+
+ 
+      
+
+
+
