@@ -1,0 +1,18 @@
+HASHDEEP
+Go into root - sudo su
+Install Hashdeep - apt install hashdeep
+To know version - hashdeep -V
+1.To generate hash value --
+    To generate hash value of a file - hashdeep file1.txt (generates hash values using md5 & sha256)
+    To generate hash value using md5 algo - hashdeep -c md5 file1.txt 
+    If no path in hash value -  hasdeep -b md5 file1.txt
+    Using various algos - hashdeep -b md5,sha1,sha257,tiger file1.txt
+    Of all files in the folder - hashdeep -c md5 *.txt
+    Hashing in blocks - hashdeep -b md5 -p 10 file1.txt
+    Recursively hash all the files in the directory - hashdeep c md5 -r /home/xadd-145/Desktop/Aditi
+    To store hash value of 1 file in other file - hashdeep new.txt > hash.txt
+    To store hash values of all file in other file - hashdeep *> hash.txt
+2.Forensic Auditing –
+    Auditing/Comparing - hashdeep -a new.txt -k hash.txt
+    (If they match then audit passed orelse audit failed)
+    If audit fails then to know where error came - hashdeep -v -a file1 -k hash.txt
