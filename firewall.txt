@@ -1,0 +1,61 @@
+Firewall:
+    A firewall is a system designed to prevent unauthorized access to or from a private network.
+  You can implement a firewall in either hardware or software form, or a combination of both.
+  Generally the firewall has two network interfaces: one for the external side of the network,
+  one for the internal side. Its purpose is to control what traffic is allowed to traverse from one
+  side to the other. As the most basic level, firewalls can block traffic intended for particular
+  IP addresses or server ports.
+    TCP network traffic moves around a network in packets, which are containers that consist of
+  a packet header—this contains control information such as source and destination addresses,
+  and packet sequence information—and the data (also known as a payload). While the
+  control information in each packet helps to ensure that its associated data gets delivered
+  properly, the elements it contains also provides firewalls a variety of ways to match packets
+  against firewall rules.
+  
+Types of Firewalls
+  Three basic types of network firewalls: 
+    packet filtering (stateless), stateful, and application layer.
+  1.Packet filtering, or stateless, firewalls work by inspecting individual packets in isolation.
+  As such, they are unaware of connection state and can only allow or deny packets based on
+  individual packet headers.
+  2.Stateful firewalls are able to determine the connection state of packets, which makes them
+  much more flexible than stateless firewalls. They work by collecting related packets until
+  the connection state can be determined before any firewall rules are applied to the traffic.
+  3.Application firewalls go one step further by analyzing the data being transmitted, which
+  allows network traffic to be matched against firewall rules that are specific to individual
+  services or applications. These are also known as proxy-based firewalls.
+  
+Basic of iptables
+  Iptables is a firewall, installed by default on all official Ubuntu distributions (Ubuntu,
+  Kubuntu, Xubuntu). When you install Ubuntu, iptables is there, but it allows all traffic by
+  default.
+    The rules in IPTables are written to deal 3 different scenarios:
+      1.Those packets entering your machine that are destined for your machine. (INPUT)
+      2.Those packets leaving your machine. (OUTPUT)
+      3.Those packets entering your machine, but are destined for another machine and will pass
+        through your machine (FORWARD).
+    In Iptables, these scenarios are referred to as INPUT, OUTPUT, and FORWARD,respectively.
+  Once the traffic type has been specified, three actions may be taken:
+    1.ACCEPT allows packets to pass through the firewall.
+    2.DROP ignores the packet and sends no response to the request.
+    3.REJECT ignores the packet, but responds to the request with a packet denied msg.
+    
+Types of Iptables
+    1.Filter    2.Nat     3.Mangle    4.Raw
+
+COMMANDS=>
+    1.List the current filter rules- iptables -L
+    2.View contents of tables- iptables -t filter --list
+                               iptables -t nat --list
+    3.Allowing Incoming traffic on specidic ports
+          Appending in iptable in INPUT targetting DROP - iptables -A INPUT -j ACCEPT
+              (To check run iptables -L)
+          tcp in ssh/20: iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+          tcp on port 80/http: iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+    4.Dropping/Blocking Traffic
+          Drop packets- iptables -A INPUT -j DROP
+    5.Editing IPtables
+          Append: sudo iptables -I INPUT 1 -i lo -j ACCEPT
+          Append: iptables -I FORWARD 1 -i lo -p tcp --dport 80 -j ACCEPT
+          Delete all rules: iptables -J
+
