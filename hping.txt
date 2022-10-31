@@ -1,0 +1,6 @@
+Denial of Service Attack:
+    A denial of service (DoS) event is a cyber attack in which hackers or
+    cybercriminals seek to make a host machine, online service or network resource
+    unavailable to its intended users.
+    Different types of Denial of Service Attacks: Syn flood, Ping (ICMP) flood, UDP flood, etc.
+    Hping3 for performing DOS attack
