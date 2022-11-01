@@ -1,0 +1,61 @@
+//NMAP
+  Nmap can open ports, perform OS fingerprinting, do a ping scan, tcp port scan, udp port scan, etc.
+  A port scan is a series of messages sent by someone attempting to break into a computer to learn which computer network services, 
+  each associated with a "well-known" port number, the computer provides. 
+  Port scanning, a favourite approach of computer cracker, gives the assailant an idea where
+  to probe for weaknesses. Essentially, a port scan consists of sending a message to each port, 
+  one at a time. The kind of response received indicates whether the port is used and can therefore be probed for weakness.
+  Nmap (“Network Mapper”) is an open source tool for network exploration and security auditing. 
+  It was designed to rapidly scan large networks,although it works fine against single hosts.
+  
+  The state is either open, filtered, closed, or unfiltered.
+  
+  The output from Nmap is a list of scanned targets, 
+  with supplemental information on each depending on the options used. 
+  Key among that information is the “interesting ports table”. 
+  That table lists the port number and protocol, service name, and state.
+  
+  Basic syntax: nmap -s[alphabet] [ip address/website]
+  Options:
+      T: To form tcp connection
+      S: For Syn scan
+      F: packets with Fin flag is set.
+      N: Null
+      X: Xmas 
+      P: Ping
+      A: Ack
+     -p:ports/port nos
+      V: Version Control
+     -O: OS Fingerprinting
+     -A: VersionControl + OSFingerprinting
+  Commands:
+    1.nmap -sT ipadress
+    TCP CONNECT SCAN:form tcp connection. port scanning...makes all ports open.
+    2.nmap -sS ipadress
+    TCP SYN SCAN:3 way handshake happens...syn,syn+ack,ack(syn is dropped).
+    3.nmap -sF ipaddress
+    TCP FIN SCAN:closed ports should recieve & Open ports must drop. Packets with only Fin flag is set.
+    4.nmap -sN ipaddress
+    TCP NULL SCAN:use to identify listening TCP ports. A Null Scan is a series of TCP packets that contain a sequence number of 0 and no set flags.
+    If open port, no response...if closed port RST packet will be recieved.
+    5.nmap -sX ipaddress
+    XMAS SCAN:sets the FIN, URG and PUSH flags are set. Drop packets if recieving port is Open.
+    6.nmap -sP IP address 
+    PING SWEEP:This scan type lists the hosts within the specified range that responded to a ping. 
+    It allows you to detect which computers are online, rather than which ports are open.
+    7.nmap -sA IP address 
+    ACK SCAN:sends ACK packets to a host. To detrmine firewall-Stateless if SYN packets & Stateful if ACK packets.
+    If RST comes back, the port is classified "unfiltered",  
+    If nothing comes back, the port is said to be "filtered", that is, the firewall prevented the RST coming back from the port. 
+    8.nmap -p23 ipaddress (scans specific port)
+      nmap -p23-443 ipaddress (scans ports ranging from 23 to 443)
+    SCANNING RANGE OF PORTS: Scanning at ports
+    9.nmap -sV -p 1-80 192.168.1.1/24
+    VERSION CONTROL:Version Detection collects information about the specific service running on an open port, including the product name and version number.
+    -sV enables Version control while -A enables both OS Fingerprinting & Version control
+    10.nmap -O ipaddress
+    OS Fingerprinting:sends a series of TCP and UDP packets to the remote host
+    
+    
+    
+    
