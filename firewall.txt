@@ -43,6 +43,11 @@ Basic of iptables
 Types of Iptables
     1.Filter    2.Nat     3.Mangle    4.Raw
 
+Opts:-
+    -A: Append this rule in chain
+    -p: connection protocol used
+    -j: Jump to specified target
+
 COMMANDS=>
     1.List the current filter rules- iptables -L
     2.View contents of tables- iptables -t filter --list
