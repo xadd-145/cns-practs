@@ -40,8 +40,8 @@ Basic of iptables
     2.DROP ignores the packet and sends no response to the request.
     3.REJECT ignores the packet, but responds to the request with a packet denied msg.
     
-Types of Iptables
-    1.Filter    2.Nat     3.Mangle    4.Raw
+Types of Iptables(building chains)
+    1.Filter(in/out/for)    2.Nat(pre,post,for)     3.Mangle(in,out,for,pre,post)    4.Raw(pre,out)
 
 Opts:-
     -A: Append this rule in chain
