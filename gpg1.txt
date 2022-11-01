@@ -1,0 +1,18 @@
+//GPG Simplified
+
+Generate... export keys...export secret key...import keys..encrypt...decrypt
+
+First: gpg --gen-key
+        Generate keys
+Second: gpg --export -a username>filename 
+        Export keys in a file
+Third: gpg --export-secret-key -a username>filename
+        export secret key
+Fourth: gpg --import   filename_containing_public_key_of_receiver
+        import keys
+Fifth: gpg --sign-key  receiver_email 
+      (optional)
+Sixth: gpg --encrypt -r receiver_email   name_of_file
+        encrypt a random file...output new file will be created with encrpted data
+Seventh: gpg -d file_name.gpg
+          decrypt the .gpg files...output in cmd
