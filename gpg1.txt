@@ -14,5 +14,5 @@ Fifth: gpg --sign-key  receiver_email
       (optional)
 Sixth: gpg --encrypt -r receiver_email   name_of_file
         encrypt a random file...output new file will be created with encrpted data
-Seventh: gpg -d file_name.gpg
+Seventh: gpg -o newfile -d file_name.gpg
           decrypt the .gpg files...output in cmd
