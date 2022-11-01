@@ -1,4 +1,8 @@
 //GPG Simplified
+GPG TOOL TO IMPLEMENT EMAIL SECURITY
+GPG:GNU Privacy Guard
+GPG is the OpenPGP part of the GNU Privacy Guard (GnuPG). It is a tool to provide digital encryption and signing services using the OpenPGP standard. 
+gpg features complete key management and all the bells and whistles you would expect from a full OpenPGP implementation.
 
 Generate... export keys...export secret key...import keys..encrypt...decrypt
 
